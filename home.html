@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMG College of Arts & Science</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --plum:#5D2E46;
+  --sand:#F4F1DE;
+  --terracotta:#E67E22;
+  --forest:#2D6A4F;
+  --text:#3b3b3b;
+  --border:#e0dcc8;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins,sans-serif;
+  background:var(--sand);
+  color:var(--text);
+  overflow-x:hidden;
+  animation:pageFadeIn .35s ease forwards;
+}
+a{text-decoration:none;color:inherit}
+
+/* PAGE TRANSITION */
+.page-transition{
+  position:fixed;
+  inset:0;
+  background:var(--sand);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease;
+  z-index:9999;
+}
+
+@keyframes pageFadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@media (prefers-reduced-motion: reduce){
+  body{animation:none}
+  .page-transition{transition:none}
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  padding:14px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--plum);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:700;
+  color:var(--sand);
+}
+.brand img{height:40px}
+
+/* NAV */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:24px;
+}
+nav a{color:var(--sand)}
+nav a:hover{color:var(--terracotta)}
+
+.admission-btn{
+  padding:8px 20px;
+  border-radius:30px;
+  background:var(--terracotta);
+  color:white;
+  font-weight:600;
+}
+
+/* SOCIALS */
+.socials{
+  display:flex;
+  gap:14px;
+}
+.socials a{color:var(--sand)}
+
+/* HAMBURGER */
+.menu-btn{
+  display:none;
+  width:32px;
+  height:22px;
+  position:relative;
+  cursor:pointer;
+}
+.menu-btn span{
+  position:absolute;
+  width:100%;
+  height:3px;
+  background:var(--sand);
+  left:0;
+  transition:.35s ease;
+}
+.menu-btn span:nth-child(1){top:0}
+.menu-btn span:nth-child(2){top:9px}
+.menu-btn span:nth-child(3){top:18px}
+.menu-btn.active span:nth-child(1){transform:rotate(45deg);top:9px}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){transform:rotate(-45deg);top:9px}
+
+/* HERO */
+.hero{
+  padding:160px 80px 100px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:70px;
+  align-items:center;
+}
+.hero h1{
+  font-size:3.3rem;
+  color:var(--terracotta);
+}
+.hero p{
+  margin-top:22px;
+  max-width:520px;
+}
+.hero-actions{
+  margin-top:36px;
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.primary-btn{
+  padding:14px 36px;
+  border-radius:30px;
+  background:var(--forest);
+  color:white;
+  font-weight:600;
+}
+.secondary-btn{
+  padding:14px 36px;
+  border-radius:30px;
+  border:2px solid var(--forest);
+  color:var(--forest);
+}
+.hero-image img{
+  width:100%;
+  border-radius:18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+  padding:80px;
+}
+.stat{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:34px;
+  text-align:center;
+}
+.stat h2{color:var(--forest)}
+
+/* ABOUT */
+.about{
+  padding:100px 80px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+}
+.about h2{color:var(--terracotta)}
+.about p{margin-top:18px;line-height:1.8}
+
+/* CTA */
+.cta{
+  margin:100px 80px;
+  padding:70px;
+  background:var(--plum);
+  border-radius:28px;
+  color:var(--sand);
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+}
+.cta h2{color:var(--terracotta)}
+.cta a{
+  justify-self:end;
+  padding:14px 36px;
+  background:var(--forest);
+  color:white;
+  border-radius:30px;
+}
+
+/* FOOTER */
+footer{
+  background:#3f1f30;
+  color:#efe8d5;
+  padding:70px 60px 30px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:40px;
+}
+footer h3{color:var(--terracotta)}
+footer a{color:#efe8d5}
+.footer-bottom{
+  text-align:center;
+  margin-top:40px;
+  font-size:.9rem;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:14px 25px}
+  .menu-btn{display:block}
+  .nav-right{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:var(--plum);
+    flex-direction:column;
+    display:none;
+    padding:20px;
+  }
+  .nav-right.active{display:flex}
+  nav ul{flex-direction:column;align-items:center}
+  .socials{justify-content:center}
+
+  .hero{
+    grid-template-columns:1fr;
+    padding:140px 25px 80px;
+    text-align:center;
+  }
+  .hero-actions{justify-content:center}
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+    padding:60px 25px;
+  }
+  .about{
+    grid-template-columns:1fr;
+    padding:80px 25px;
+  }
+  .cta{
+    grid-template-columns:1fr;
+    margin:60px 25px;
+    padding:50px;
+    text-align:center;
+  }
+  .cta a{justify-self:center}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-transition" id="pageTransition"></div>
+
+<nav>
+  <div class="brand">
+    <img src="TMG-Logo-520X300.png">
+    <span>TMGCAS</span>
+  </div>
+
+  <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="nav-right" id="navMenu">
+    <ul>
+      <li><a href="home.html" onclick="closeMenu()">Home</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="departments.html" onclick="closeMenu()">Departments</a></li>
+      <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+      <li><a style="color: black;" href="apply.html" class="admission-btn" onclick="closeMenu()">Admission</a></li>
+    </ul>
+    <div class="socials">
+      <a href="https://www.instagram.com/tmg_official2000?igsh=ZzBuNDNxbGVxY29s" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://youtube.com/@padminikothapalli6872?si=Z1jY9mhhlmiNYhb5" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <h1>TMG College of Arts & Science</h1>
+    <p>
+      Affiliated to the University of Madras and approved by the Government of Tamil Nadu,
+      TMG College of Arts & Science is committed to academic excellence and holistic development.
+    </p>
+    <div class="hero-actions">
+      <a href="apply.html" class="primary-btn">Apply for Admission</a>
+      <a href="contact.html" class="secondary-btn">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="images/01.avif" alt="TMG College Campus">
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat"><h2>25+</h2><p>Years of Excellence</p></div>
+  <div class="stat"><h2>10+</h2><p>UG & PG Programmes</p></div>
+  <div class="stat"><h2>50+</h2><p>Qualified Faculty</p></div>
+  <div class="stat"><h2>95%</h2><p>Student Progress</p></div>
+</section>
+
+<section class="about">
+  <div>
+    <h2>About the Institution</h2>
+    <p>
+      TMG College of Arts & Science is a private unaided co-educational institution
+      managed by Vinayaka Educational Trust.
+    </p>
+  </div>
+
+  <div>
+    <h2>Our Commitment</h2>
+    <p>
+      We focus on strong academics, ethical values, employability skills,
+      and leadership qualities.
+    </p>
+  </div>
+</section>
+
+<section class="cta">
+  <div>
+    <h2>Admissions Open 2025–2026</h2>
+    <p>Start your academic journey with TMGCAS.</p>
+  </div>
+  <a href="apply.html">Apply Now</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>About TMGCAS</h3>
+      <p>Affiliated to University of Madras • Knowledge is Power</p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <a href="departments.html">Departments</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div>
+      <h3>Location</h3>
+      <p>
+        No: 85, Mudichur Road,<br>
+        Manimangalam,<br>
+        Chennai – 601301
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 TMG College of Arts & Science
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  navMenu.classList.toggle("active");
+  menuBtn.classList.toggle("active");
+}
+function closeMenu(){
+  navMenu.classList.remove("active");
+  menuBtn.classList.remove("active");
+}
+
+/* PAGE TRANSITION SCRIPT */
+document.querySelectorAll("a[href]").forEach(link=>{
+  const href = link.getAttribute("href");
+  if(
+    !href ||
+    href.startsWith("http") ||
+    href.startsWith("#") ||
+    href.startsWith("mailto") ||
+    href.startsWith("tel") ||
+    link.target === "_blank"
+  ) return;
+
+  link.addEventListener("click", e=>{
+    e.preventDefault();
+    document.getElementById("pageTransition").style.opacity = "1";
+    setTimeout(()=>{ window.location.href = href; }, 350);
+  });
+});
+</script>
+
+</body>
+</html>

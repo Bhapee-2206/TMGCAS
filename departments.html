@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Departments | TMG College of Arts & Science</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --plum:#5D2E46;
+  --sand:#F4F1DE;
+  --terracotta:#E67E22;
+  --forest:#2D6A4F;
+  --text:#3b3b3b;
+  --muted:#6b6b6b;
+  --border:#e0dcc8;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins,sans-serif;
+  background:var(--sand);
+  color:var(--text);
+  padding-top:90px;
+  overflow-x:hidden;
+  animation:pageFadeIn .35s ease forwards;
+}
+a{text-decoration:none;color:inherit}
+
+/* PAGE TRANSITION */
+.page-transition{
+  position:fixed;
+  inset:0;
+  background:var(--sand);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease;
+  z-index:9999;
+}
+
+@keyframes pageFadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@media (prefers-reduced-motion: reduce){
+  body{animation:none}
+  .page-transition{transition:none}
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  padding:14px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--plum);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:700;
+  color:var(--sand);
+}
+.brand img{height:40px}
+
+/* NAV */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:24px;
+}
+nav a{color:var(--sand)}
+nav a:hover{color:var(--terracotta)}
+
+.admission-btn{
+  padding:8px 20px;
+  border-radius:30px;
+  background:var(--terracotta);
+  color:white;
+  font-weight:600;
+}
+
+/* SOCIAL */
+.socials{
+  display:flex;
+  gap:14px;
+}
+.socials a{color:var(--sand)}
+.socials a:hover{color:var(--terracotta)}
+
+/* HAMBURGER */
+.menu-btn{
+  display:none;
+  width:32px;
+  height:22px;
+  position:relative;
+  cursor:pointer;
+}
+.menu-btn span{
+  position:absolute;
+  width:100%;
+  height:3px;
+  background:var(--sand);
+  left:0;
+  transition:.35s ease;
+}
+.menu-btn span:nth-child(1){top:0}
+.menu-btn span:nth-child(2){top:9px}
+.menu-btn span:nth-child(3){top:18px}
+.menu-btn.active span:nth-child(1){transform:rotate(45deg);top:9px}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){transform:rotate(-45deg);top:9px}
+
+/* HEADER */
+.header{
+  padding:70px 80px 80px;
+}
+.header h1{
+  font-size:3rem;
+  color:var(--terracotta);
+}
+.header p{
+  margin-top:20px;
+  max-width:900px;
+  line-height:1.8;
+}
+
+/* SECTION */
+.section{
+  padding:80px;
+}
+.section-title{
+  font-size:2.2rem;
+  margin-bottom:16px;
+  color:var(--terracotta);
+}
+.section-desc{
+  max-width:900px;
+  line-height:1.8;
+  margin-bottom:50px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+/* COURSE CARD */
+.course{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:32px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.5s ease;
+}
+.course.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.course:hover{
+  transform:translateY(-8px);
+  border-color:var(--forest);
+}
+
+.icon{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:var(--forest);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:1.4rem;
+  margin-bottom:18px;
+}
+
+.course span{
+  font-size:.8rem;
+  color:var(--forest);
+  font-weight:600;
+}
+.course h3{
+  margin-top:6px;
+  font-size:1.15rem;
+  color:var(--plum);
+}
+.course p{
+  margin-top:10px;
+  font-size:.95rem;
+  line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+  background:#3f1f30;
+  color:#efe8d5;
+  padding:70px 60px 30px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:40px;
+}
+footer h3{
+  color:var(--terracotta);
+  margin-bottom:14px;
+}
+footer a{
+  display:block;
+  margin-bottom:8px;
+  color:#efe8d5;
+}
+footer a:hover{color:var(--terracotta)}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:40px;
+  font-size:.9rem;
+  opacity:.85;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:14px 25px}
+  .menu-btn{display:block}
+
+  .nav-right{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:var(--plum);
+    flex-direction:column;
+    display:none;
+    padding:20px;
+  }
+  .nav-right.active{display:flex}
+  nav ul{flex-direction:column;align-items:center}
+  .socials{justify-content:center}
+
+  .header,.section{padding:60px 25px}
+  .header h1{font-size:2.2rem}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-transition" id="pageTransition"></div>
+
+<nav>
+  <div class="brand">
+    <img src="TMG-Logo-520X300.png">
+    <span>TMGCAS</span>
+  </div>
+
+  <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="nav-right" id="navMenu">
+    <ul>
+      <li><a href="home.html" onclick="closeMenu()">Home</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="departments.html" onclick="closeMenu()">Departments</a></li>
+      <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+      <li><a style="color: black;" href="apply.html" class="admission-btn" onclick="closeMenu()">Admission</a></li>
+    </ul>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/tmg_official2000?igsh=ZzBuNDNxbGVxY29s" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://youtube.com/@padminikothapalli6872?si=Z1jY9mhhlmiNYhb5" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</nav>
+
+<section class="header">
+  <h1>Departments & Programmes</h1>
+  <p>
+    At TMGCAS, you are encouraged to explore, collaborate, and innovate.
+    Each programme is designed to build professional competence,
+    communication skills, and independent thinking.
+  </p>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Undergraduate Programmes (UG)</h2>
+  <p class="section-desc">
+    Our undergraduate programmes offer a strong academic foundation
+    and a vibrant learning environment for holistic development.
+  </p>
+
+  <div class="grid">
+    <!-- courses unchanged -->
+    <div class="course"><div class="icon"><i class="fa-solid fa-chart-line"></i></div><span>UG</span><h3>B.Com</h3><p>Commerce, finance, accounting, and business foundations.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-file-signature"></i></div><span>UG</span><h3>B.Com – Corporate Secretaryship</h3><p>Corporate law, governance, and secretarial practice.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-network-wired"></i></div><span>UG</span><h3>B.Com – Information Systems</h3><p>Business systems integrated with IT management.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-briefcase"></i></div><span>UG</span><h3>BBA</h3><p>Leadership, management, and entrepreneurship skills.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-laptop-code"></i></div><span>UG</span><h3>B.Sc – Computer Science</h3><p>Programming, algorithms, and computing fundamentals.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-code"></i></div><span>UG</span><h3>BCA</h3><p>Software development and application design.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-square-root-variable"></i></div><span>UG</span><h3>B.Sc – Mathematics</h3><p>Analytical reasoning and mathematical problem-solving.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-utensils"></i></div><span>UG</span><h3>B.Sc – Hotel & Catering Management</h3><p>Hospitality operations and service excellence.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-microchip"></i></div><span>UG</span><h3>B.Sc – Electronic Science</h3><p>Electronics, circuits, and applied technology.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Postgraduate Programmes (PG)</h2>
+  <p class="section-desc">
+    Our postgraduate programmes help students deepen expertise
+    and improve career opportunities.
+  </p>
+
+  <div class="grid">
+    <div class="course"><div class="icon"><i class="fa-solid fa-coins"></i></div><span>PG</span><h3>M.Com</h3><p>Advanced commerce, finance, and research orientation.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-server"></i></div><span>PG</span><h3>M.Sc – Information Technology</h3><p>Advanced IT systems and enterprise technologies.</p></div>
+    <div class="course"><div class="icon"><i class="fa-solid fa-database"></i></div><span>PG</span><h3>M.Sc – Computer Science</h3><p>High-level computing, data structures, and research skills.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>About TMGCAS</h3>
+      <p>Affiliated to University of Madras • Knowledge is Power</p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html">Admission</a>
+    </div>
+    <div>
+      <h3>Location</h3>
+      <p>No: 85, Mudichur Road,<br>Manimangalam, Chennai – 601301</p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>📧 <a href="mailto:info@tmgcollege.edu.in">info@tmgcollege.edu.in</a></p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 TMG College of Arts & Science
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  navMenu.classList.toggle("active");
+  menuBtn.classList.toggle("active");
+}
+function closeMenu(){
+  navMenu.classList.remove("active");
+  menuBtn.classList.remove("active");
+}
+
+/* CARD ANIMATION */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add("show"); }
+  });
+},{threshold:.2});
+document.querySelectorAll(".course").forEach(c=>observer.observe(c));
+
+/* PAGE TRANSITION */
+document.querySelectorAll("a[href]").forEach(link=>{
+  const href=link.getAttribute("href");
+  if(!href||href.startsWith("http")||href.startsWith("#")||href.startsWith("mailto")||href.startsWith("tel")||link.target==="_blank") return;
+  link.addEventListener("click",e=>{
+    e.preventDefault();
+    pageTransition.style.opacity="1";
+    setTimeout(()=>location.href=href,350);
+  });
+});
+</script>
+
+</body>
+</html>

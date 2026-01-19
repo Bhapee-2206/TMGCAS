@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | TMG College of Arts & Science</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --plum:#5D2E46;
+  --sand:#F4F1DE;
+  --terracotta:#E67E22;
+  --forest:#2D6A4F;
+  --text:#3b3b3b;
+  --border:#e0dcc8;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins,sans-serif;
+  background:var(--sand);
+  color:var(--text);
+  overflow-x:hidden;
+  animation:pageFadeIn .35s ease forwards;
+}
+a{text-decoration:none;color:inherit}
+
+/* PAGE TRANSITION */
+.page-transition{
+  position:fixed;
+  inset:0;
+  background:var(--sand);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease;
+  z-index:9999;
+}
+
+@keyframes pageFadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@media (prefers-reduced-motion: reduce){
+  body{animation:none}
+  .page-transition{transition:none}
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  padding:14px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--plum);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:700;
+  color:var(--sand);
+}
+.brand img{height:40px}
+
+/* NAV */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:24px;
+}
+nav a{color:var(--sand)}
+nav a:hover{color:var(--terracotta)}
+
+.admission-btn{
+  padding:8px 20px;
+  border-radius:30px;
+  background:var(--terracotta);
+  color:white;
+  font-weight:600;
+}
+
+/* SOCIALS */
+.socials{
+  display:flex;
+  gap:14px;
+}
+.socials a{color:var(--sand)}
+.socials a:hover{color:var(--terracotta)}
+
+/* HAMBURGER */
+.menu-btn{
+  display:none;
+  width:32px;
+  height:22px;
+  position:relative;
+  cursor:pointer;
+}
+.menu-btn span{
+  position:absolute;
+  width:100%;
+  height:3px;
+  background:var(--sand);
+  left:0;
+  transition:.35s ease;
+}
+.menu-btn span:nth-child(1){top:0}
+.menu-btn span:nth-child(2){top:9px}
+.menu-btn span:nth-child(3){top:18px}
+.menu-btn.active span:nth-child(1){transform:rotate(45deg);top:9px}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){transform:rotate(-45deg);top:9px}
+
+/* HEADER */
+.header{
+  padding:160px 80px 80px;
+}
+.header h1{
+  font-size:3rem;
+  color:var(--terracotta);
+}
+.header p{
+  margin-top:18px;
+  max-width:700px;
+  line-height:1.8;
+}
+
+/* MAIN SECTION */
+.section{
+  padding:90px 80px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+}
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:40px;
+}
+.card h2{
+  color:var(--terracotta);
+  font-size:1.8rem;
+}
+.card p{
+  margin-top:16px;
+  line-height:1.8;
+}
+
+/* VALUES */
+.values{
+  padding:80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+.value{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:30px;
+}
+.value i{
+  font-size:1.6rem;
+  color:var(--forest);
+}
+.value h3{
+  margin-top:14px;
+  color:var(--plum);
+}
+.value p{
+  margin-top:10px;
+}
+
+/* FOOTER */
+footer{
+  background:#3f1f30;
+  color:#efe8d5;
+  padding:70px 60px 30px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:40px;
+}
+footer h3{
+  color:var(--terracotta);
+  margin-bottom:14px;
+}
+footer a{
+  color:#efe8d5;
+  display:block;
+  margin-bottom:8px;
+}
+footer a:hover{color:var(--terracotta)}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:40px;
+  font-size:.9rem;
+  opacity:.85;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:14px 25px}
+  .menu-btn{display:block}
+
+  .nav-right{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:var(--plum);
+    flex-direction:column;
+    display:none;
+    padding:20px;
+  }
+  .nav-right.active{display:flex}
+  nav ul{flex-direction:column;align-items:center}
+  .socials{justify-content:center}
+
+  .header,.section,.values{padding:70px 25px}
+  .section{grid-template-columns:1fr}
+  .header h1{font-size:2.2rem}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-transition" id="pageTransition"></div>
+
+<nav>
+  <div class="brand">
+    <img src="TMG-Logo-520X300.png">
+    <span>TMGCAS</span>
+  </div>
+
+  <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="nav-right" id="navMenu">
+    <ul>
+      <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="departments.html" onclick="closeMenu()">Departments</a></li>
+      <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+      <li><a style="color: black;" href="apply.html" class="admission-btn" onclick="closeMenu()">Admission</a></li>
+    </ul>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/tmg_official2000?igsh=ZzBuNDNxbGVxY29s" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://youtube.com/@padminikothapalli6872?si=Z1jY9mhhlmiNYhb5" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</nav>
+
+<!-- 🔒 CONTENT BELOW IS UNCHANGED -->
+
+<section class="header">
+  <h1>About TMG College of Arts & Science</h1>
+  <p>
+    Founded in 2000 and affiliated to the University of Madras, TMG College of Arts & Science
+    is a private, co-educational institution committed to academic excellence, ethical leadership,
+    and holistic student development.
+  </p>
+</section>
+
+<section class="section">
+  <div class="card">
+    <h2>Our Heritage & Vision</h2>
+    <p>
+      Established by Chairman Dr. T. M. Gunaraja, the college has grown steadily over two decades
+      to become a respected centre of higher learning, emphasizing inquiry, skill development,
+      and character formation.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Academic Environment</h2>
+    <p>
+      TMGCAS offers undergraduate and postgraduate programs in Commerce, Science,
+      Computer Applications, and Management with experienced faculty and strong academic culture.
+    </p>
+  </div>
+</section>
+
+<section class="values">
+  <div class="value">
+    <i class="fa-solid fa-school"></i>
+    <h3>Comprehensive Programs</h3>
+    <p>UG and PG degrees across commerce, science, IT, and management.</p>
+  </div>
+
+  <div class="value">
+    <i class="fa-solid fa-map-location-dot"></i>
+    <h3>Prime Location</h3>
+    <p>Conveniently located near Tambaram with easy access.</p>
+  </div>
+
+  <div class="value">
+    <i class="fa-solid fa-building-columns"></i>
+    <h3>Infrastructure</h3>
+    <p>Modern classrooms, labs, library, and sports facilities.</p>
+  </div>
+
+  <div class="value">
+    <i class="fa-solid fa-handshake-angle"></i>
+    <h3>Student Development</h3>
+    <p>Focus on leadership, communication, and employability skills.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>About TMGCAS</h3>
+      <p>Affiliated to University of Madras • Knowledge is Power</p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <a href="departments.html">Departments</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html">Admission</a>
+    </div>
+
+    <div>
+      <h3>Location</h3>
+      <p>
+        No: 85, Mudichur Road,<br>
+        Manimangalam,<br>
+        Near Tambaram,<br>
+        Chennai – 601301
+      </p>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p>📧 <a href="mailto:info@tmgcollege.edu.in">info@tmgcollege.edu.in</a></p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 TMG College of Arts & Science, Manimangalam
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  navMenu.classList.toggle("active");
+  menuBtn.classList.toggle("active");
+}
+function closeMenu(){
+  navMenu.classList.remove("active");
+  menuBtn.classList.remove("active");
+}
+
+document.querySelectorAll("a[href]").forEach(link=>{
+  const href=link.getAttribute("href");
+  if(!href||href.startsWith("http")||href.startsWith("#")||href.startsWith("mailto")||href.startsWith("tel")||link.target==="_blank") return;
+  link.addEventListener("click",e=>{
+    e.preventDefault();
+    pageTransition.style.opacity="1";
+    setTimeout(()=>location.href=href,350);
+  });
+});
+</script>
+
+</body>
+</html>

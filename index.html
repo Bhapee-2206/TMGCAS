@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMGCAS | Welcome</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --plum:#5D2E46;
+  --sand:#F4F1DE;
+  --terracotta:#E67E22;
+  --forest:#2D6A4F;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--sand);
+  font-family:Poppins,sans-serif;
+  overflow:hidden;
+  transition:background .8s ease;
+}
+
+/* OVERLAY */
+.fade-out{
+  position:fixed;
+  inset:0;
+  background:white;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .6s ease;
+  z-index:10;
+}
+
+.loader{text-align:center}
+
+/* LOGO */
+.logo-wrap{
+  width:300px;
+  max-width:80vw;
+  margin:0 auto 30px;
+}
+.logo-wrap svg{width:100%}
+
+/* LOGO REVEAL — VERY FAST */
+.reveal-rect{
+  animation:reveal 1.6s cubic-bezier(.65,.05,.36,1) forwards;
+}
+@keyframes reveal{
+  from{width:0}
+  to{width:100%}
+}
+
+/* TITLE */
+svg.title{
+  width:420px;
+  max-width:90vw;
+}
+svg.title text{
+  font-size:92px;
+  font-weight:700;
+  fill:none;
+  stroke:var(--plum);
+  stroke-width:2.6;
+  stroke-dasharray:1100;
+  stroke-dashoffset:1100;
+  animation:draw 1.2s ease forwards;
+  animation-delay:1.6s;
+}
+svg.title text.fill{
+  animation:fillText .4s ease forwards;
+  animation-delay:2.8s;
+}
+
+/* WELCOME — QUICK */
+.welcome{
+  margin-top:20px;
+  font-size:1.05rem;
+  letter-spacing:1.2px;
+  color:var(--forest);
+  opacity:0;
+  animation:welcomeFade 1s ease forwards;
+  animation-delay:3s;
+}
+@keyframes welcomeFade{
+  0%{opacity:0;transform:translateY(6px)}
+  25%{opacity:1;transform:none}
+  75%{opacity:1}
+  100%{opacity:0}
+}
+
+/* PROGRESS */
+.line{
+  width:260px;
+  height:3px;
+  background:#e2dcc8;
+  margin:26px auto 0;
+  border-radius:4px;
+  overflow:hidden;
+}
+.line span{
+  display:block;
+  width:0%;
+  height:100%;
+  background:var(--terracotta);
+  animation:load 4.2s linear forwards;
+}
+
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fillText{to{fill:var(--plum)}}
+@keyframes load{to{width:100%}}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .welcome{opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader">
+
+  <div class="logo-wrap">
+    <svg viewBox="0 0 520 300">
+      <defs>
+        <mask id="logoMask">
+          <rect x="0" y="0" height="300" fill="white" class="reveal-rect"/>
+        </mask>
+      </defs>
+      <image 
+        href="TMG-Logo-520X300.png"
+        width="520"
+        height="300"
+        mask="url(#logoMask)"
+      />
+    </svg>
+  </div>
+
+  <svg class="title" viewBox="0 0 600 150">
+    <text x="50%" y="70%" text-anchor="middle">TMGCAS</text>
+    <text x="50%" y="70%" text-anchor="middle" class="fill">TMGCAS</text>
+  </svg>
+
+  <div class="welcome">Welcome to TMG College of Arts & Science</div>
+
+  <div class="line"><span></span></div>
+
+</div>
+
+<div class="fade-out" id="fade"></div>
+
+<script>
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if(reduced){
+  setTimeout(()=>location.href="index.html",600);
+}else{
+  setTimeout(()=>document.body.style.background="#ffffff",4000);
+  setTimeout(()=>document.getElementById("fade").style.opacity="1",4400);
+  setTimeout(()=>location.href="home.html",5000);
+}
+</script>
+
+</body>
+</html>
